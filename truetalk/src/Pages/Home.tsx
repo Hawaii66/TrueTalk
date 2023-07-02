@@ -21,6 +21,7 @@ import {
   TextInput,
 } from "react-native-paper";
 import { GetColor, GetTableColor } from "../Functions/Color";
+import Answer from "../Components/Answer";
 
 function Home() {
   const [expanded, setExpanded] = useState(false);
@@ -99,78 +100,8 @@ function Home() {
               </View>
             </List.Accordion>
           </View>
-          {mainQuestion.answers.map((anser) => {
-            return (
-              <Card
-                mode="outlined"
-                key={anser.id}
-                style={{
-                  minWidth: Dimensions.get("screen").width * 0.85,
-                  marginBottom: 8,
-                }}
-              >
-                <Card.Title
-                  titleVariant="titleLarge"
-                  title={anser.author.username}
-                  left={(props) => (
-                    <Avatar.Text
-                      {...props}
-                      size={36}
-                      label={anser.author.username.slice(0, 2).toUpperCase()}
-                    />
-                  )}
-                  leftStyle={{ marginLeft: 8 }}
-                />
-                <Divider horizontalInset={true} bold />
-                <Card.Content>
-                  <FText
-                    style={{
-                      fontFamily: "600",
-                      color: GetColor("black"),
-                      fontSize: 16,
-                      minHeight: 16 * 1.5,
-                    }}
-                  >
-                    {anser.text}
-                  </FText>
-                </Card.Content>
-                <Divider horizontalInset={true} bold />
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row-reverse",
-                    gap: 2,
-                    marginVertical: 4,
-                  }}
-                >
-                  <Button
-                    onPress={() => {}}
-                    icon="share"
-                    mode="text"
-                    compact={true}
-                  >
-                    <FText style={{ fontFamily: "700" }}>Share</FText>
-                  </Button>
-                  <Button
-                    onPress={() => {}}
-                    icon="medal"
-                    mode="text"
-                    compact={true}
-                  >
-                    <FText style={{ fontFamily: "700" }}>Reward</FText>
-                  </Button>
-                  <Button
-                    onPress={() => {}}
-                    icon="thumb-up"
-                    mode="text"
-                    compact={true}
-                    textColor={GetTableColor("red")}
-                  >
-                    <FText style={{ fontFamily: "700" }}>{anser.likes}</FText>
-                  </Button>
-                </View>
-              </Card>
-            );
+          {mainQuestion.answers.map((answer) => {
+            return <Answer showUser answer={answer} />;
           })}
         </ScrollView>
       </View>

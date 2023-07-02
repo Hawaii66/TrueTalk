@@ -14,7 +14,6 @@ export async function POST(requset: NextRequest) {
     password: password,
   });
 
-  console.log(authed);
   if (authed.error) {
     return NextResponse.json(
       {

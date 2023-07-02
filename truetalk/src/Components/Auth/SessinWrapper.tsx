@@ -26,7 +26,18 @@ function SessinWrapper({ children, setLoadingState }: Props) {
     setLoadingState(false);
   };
 
+  const signOut = async () => {
+    setUser(null);
+
+    await AsyncStorage.setItem("token", "");
+    setToken("");
+  };
+
   useEffect(() => {
+    if (token === "") {
+      setLoadingState(false);
+      return;
+    }
     updateUser();
   }, [token]);
 
@@ -36,6 +47,7 @@ function SessinWrapper({ children, setLoadingState }: Props) {
         token,
         user,
         setToken,
+        signOut,
       }}
     >
       {children}

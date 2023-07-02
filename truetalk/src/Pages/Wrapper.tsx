@@ -5,6 +5,7 @@ import { GetColor } from "../Functions/Color";
 import Login from "./Login";
 import Home from "./Home";
 import Navigation from "./Navigation";
+import Screen from "./Screen";
 
 function Wrapper() {
   const { user } = useContext(UserContext);
@@ -12,7 +13,7 @@ function Wrapper() {
   return (
     <>
       {user === null ? (
-        <>
+        <Screen>
           <FText
             style={{
               fontFamily: "700",
@@ -23,7 +24,7 @@ function Wrapper() {
             TrueTalk
           </FText>
           <Login />
-        </>
+        </Screen>
       ) : (
         <Navigation />
       )}

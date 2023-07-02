@@ -5,6 +5,7 @@ import FText from "../Components/FText";
 import Home from "./Home";
 import { GetColor } from "../Functions/Color";
 import Screen from "./Screen";
+import User from "./User";
 
 function Navigation() {
   const [index, setIndex] = React.useState(0);
@@ -21,9 +22,7 @@ function Navigation() {
     ),
     user: () => (
       <Screen>
-        <View>
-          <FText style={{ fontFamily: "800" }}>User</FText>
-        </View>
+        <User />
       </Screen>
     ),
   });

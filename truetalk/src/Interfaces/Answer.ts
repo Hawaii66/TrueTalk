@@ -21,6 +21,11 @@ export interface PrivateAnswer extends AnonymousAnswer {
   anonymous: boolean;
 }
 
+export interface QuestionAnswer extends PrivateAnswer {
+  questionId: nid;
+  questionText: string;
+}
+
 export interface BasicUserAnswer extends AnonymousAnswer {
   author: {
     id: sid;

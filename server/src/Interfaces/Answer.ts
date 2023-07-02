@@ -4,6 +4,7 @@ import { User } from "./User";
 export interface AnonymousAnswer {
   text: string;
   id: nid;
+  likes: 0;
 }
 
 export interface Answer extends AnonymousAnswer {
@@ -18,6 +19,11 @@ export interface UserAnswer {
 export interface PrivateAnswer extends AnonymousAnswer {
   author: string;
   anonymous: boolean;
+}
+
+export interface QuestionAnswer extends PrivateAnswer {
+  questionId: nid;
+  questionText: string;
 }
 
 export interface BasicUserAnswer extends AnonymousAnswer {
